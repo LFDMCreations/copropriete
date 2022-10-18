@@ -6,7 +6,7 @@ Sequel.migration do
 
     create_table(:lots) do
       primary_key :id, :type=>:Bignum
-      foreign_key :coproprietaire_id, :coproprietaires, :null=>false, :type=>:Bignum
+      foreign_key :coproprietaire_id, :coproprietaires, :null=>false, :index => true, :type=>:Bignum
       Fixnum :tantiemes, null: false
     end
 

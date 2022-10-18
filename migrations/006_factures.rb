@@ -1,7 +1,9 @@
 Sequel.migration do
   
   up do
-    
+        
+    db = self
+
     create_table(:factures) do
       # art. L441-9 du code de commerce
       primary_key :id, :type=>:Bignum
@@ -28,7 +30,7 @@ Sequel.migration do
   end
 
   down do
-    drop_table(:factures)    
+    drop_table(:factures)
   end
 
 end

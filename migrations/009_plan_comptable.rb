@@ -14,18 +14,18 @@ Sequel.migration do
 
     create_table(:sous_classes_comptables) do
       primary_key :id, :type=>:Bignum
-      foreign_key :classe_comptable_id, :classes_comptables, null: false, :type=>:Bignum
-      String :intitule, size: 250, null: false
-      String :numero, null: false
-    end
-    
-    create_table(:lignes_comptables) do
-      primary_key :id, :type=>:Bignum
-      foreign_key :sous_classe_comptable_id, :sous_classes_comptables, null: false, :type=>:Bignum
+      foreign_key :classe_comptable_id, :classes_comptables, :index => true, null: false, :type=>:Bignum
       String :intitule, size: 250, null: false
       String :numero, null: false
     end
 
+    create_table(:lignes_comptables) do
+      primary_key :id, :type=>:Bignum
+      foreign_key :sous_classe_comptable_id, :sous_classes_comptables, :index => true, null: false, :type=>:Bignum
+      String :intitule, size: 250, null: false
+      String :numero, null: false
+    end
+    
   end
 
   down do

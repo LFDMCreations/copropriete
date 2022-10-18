@@ -11,7 +11,6 @@ Sequel.migration do
       String :intitule, size: 250, null: false
       Integer :montant, null: false
       DateTime :created_at, null: false, :default=>Sequel::CURRENT_TIMESTAMP
-
     end
 
   end

@@ -25,10 +25,23 @@ Sequel.migration do
       DateTime :created_at, :null=>false, :default=>Sequel::CURRENT_TIMESTAMP
     end
 
+    create_table(:personnes_morales) do
+      primary_key :id, :type=>:Bignum
+      foreign_key :adresse_id, :adresses, :index => true, null: false, :type=>:Bignum
+      String :forme, size: 50, null: false
+      String :denomination, size: 250, null: false
+      String :mandataire_prenom, size: 250, null: false
+      String :mandataire_nom, size: 250, null: false
+      citext :mandataire_email, :null => false
+      constraint :valid_mandataire_email, :mandataire_email=>/^[^,;@ \r\n]+@[^,@; \r\n]+\.[^,@; \r\n]+$/
+      index :mandataire_email, :unique=>true
+      DateTime :created_at, :null=>false, :default=>Sequel::CURRENT_TIMESTAMP
+    end
+
   end
 
   down do
-    drop_table(:adresses)    
+    drop_table(:adresses, :personnes_physiques, :personnes_morales)
   end
 
 end

@@ -21,7 +21,7 @@ Sequel.migration do
 
     create_table(:administrator_password_hashes) do
       primary_key :id, :type=>:Bignum
-      foreign_key :user_id, :administrators, :null=>false, :type=>:Bignum, :unique=>true
+      foreign_key :administrator_id, :administrators, :index => true, :null=>false, :type=>:Bignum, :unique=>true
       String :password_digest, :null=>false
     end
 
@@ -29,7 +29,7 @@ Sequel.migration do
     # 0 = account creation completed
     create_table(:administrator_validation_status) do
       primary_key :id, :type=>:Bignum
-      foreign_key :user_id, :users, :type=>:Bignum, :unique=>true
+      foreign_key :adminisatator_id, :administrators, :type=>:Bignum, :index => true, :unique=>true
       String :password_digest, :null=>false
     end
 

@@ -4,7 +4,7 @@ Sequel.migration do
 
     db = self
     
-    create_table(:banque) do
+    create_table(:banques) do
       primary_key :id, :type=>:Bignum
       String :nom_banque, size: 250, null: false
       String :numero_de_compte, size: 250
@@ -20,9 +20,10 @@ Sequel.migration do
       DateTime :created_at, :null=>false, :default=>Sequel::CURRENT_TIMESTAMP
     end
 
-    create_table(:copropriete) do
+    create_table(:coproprietes) do
       primary_key :id, :type=>:Bignum
-      foreign_key :adresse_id, :adresses, null: false, :type=>:Bignum
+      foreign_key :adresse_id, :adresses, :index => true, null: false, :type=>:Bignum
+      foreign_key :banque_id, :banques, :index => true, null: false, :type=>:Bignum
       Fixnum :tantiemes, null: false, default: 1000
       String :immatriculation
       DateTime :reglement_date, :null=>false
