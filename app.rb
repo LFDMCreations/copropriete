@@ -2,10 +2,10 @@ require 'sinatra'
 require 'sinatra/namespace'
 require "sinatra/json"
 require "sinatra/cookies"
-require "sinatra/cors"
+#require "sinatra/cors"
 require 'bcrypt'
 require 'securerandom'
-require 'jwt'
+#require 'jwt'
 require 'sequel'
 
 # see gemfile :
@@ -13,7 +13,7 @@ require 'sequel'
 set :server, %w[thin]
 
 require_relative './config/environment.rb'
-
+require './classes_comptable.insert.rb'
 class App < Sinatra::Application
 
   get '/bonjour' do

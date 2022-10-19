@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: copropriete_development
+  username: copropriete_development
+  password: Galinette@1
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: copropriete_production
+  username: cremers
+  password: <%= ENV['CREMERS_DATABASE_PASSWORD'] %>

@@ -16,6 +16,10 @@ Run migrations using `sequel -m`
 sequel -m migrations postgres://copropriete_development@localhost/copropriete_development 
 https://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html
 
+## installation
+Run `racksh` from the directory root. 
+then `exit` and comment line 16 of `app.rb`
+re-run `racksh`
 
 ## contenu
 La migration comporte l'ensemble du plan comptable des copropriétés. 

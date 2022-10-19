@@ -1,8 +1,8 @@
-class Classe_comptable < Sequel::Model
+class ClasseComptable < Sequel::Model(:classes_comptables)
 end
 
-class Sous_classe_comptable < Sequel::Model
+class SousClasseComptable < Sequel::Model(:sous_classes_comptables)
 end
 
-class Ligne_comptable < Sequel::Model
+class LigneComptable < Sequel::Model(:lignes_comptables)
 end
