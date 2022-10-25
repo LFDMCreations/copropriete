@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative './config/environment'
 
 Dir.glob('./app/{models,helpers}/*.rb').each { |file| require file }

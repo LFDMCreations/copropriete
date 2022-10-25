@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-class Facture < Sequel::Model
+class Prestataire < Sequel::Model
 end
