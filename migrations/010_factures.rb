@@ -8,6 +8,7 @@ Sequel.migration do
       # art. L441-9 du code de commerce
       primary_key :id, type: :Bignum
       foreign_key :prestataire_id, :prestataires, index: true, null: false, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       String :service_denomination, size: 250, null: false
       String :service_quantite, size: 250, null: false
       Date :date_emission

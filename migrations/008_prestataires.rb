@@ -6,6 +6,7 @@ Sequel.migration do
 
     create_table(:prestataires) do
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       foreign_key :adresse_id, :adresses, index: true, type: :Bignum
       foreign_key :personne_morale_id, :personnes_morales, index: true, type: :Bignum
       foreign_key :personne_physique_id, :personnes_physiques, index: true, type: :Bignum
@@ -17,6 +18,9 @@ Sequel.migration do
     run 'ALTER TABLE prestataires ADD CONSTRAINT prestataire_physique_check CHECK (
       personne_morale_id IS NOT NULL OR personne_physique_id IS NOT NULL
       )'
+
+    create_join_table(copropriete_id: :coproprietes, prestataire_id: :prestataires)
+
   end
 
   down do

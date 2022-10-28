@@ -23,7 +23,6 @@ Sequel.migration do
     create_table(:coproprietes) do
       primary_key :id, type: :Bignum
       foreign_key :adresse_id, :adresses, index: true, null: false, type: :Bignum
-      foreign_key :banque_id, :banques, index: true, null: false, type: :Bignum
       Fixnum :tantiemes, null: false, default: 1000
       String :immatriculation
       DateTime :reglement_date, null: false
@@ -33,6 +32,6 @@ Sequel.migration do
   end
 
   down do
-    drop_table(:banque, :copropriete)
+    drop_table(:banques, :coproprietes)
   end
 end

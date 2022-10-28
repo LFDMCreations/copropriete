@@ -7,8 +7,10 @@ Sequel.migration do
     # Cette table est utilisé dans `coproprietes` et dans  `coproprietaires`
     create_table(:adresses) do
       primary_key :id, type: :Bignum
-      String :numero, size: 50, null: false
-      String :voie, size: 50, null: false
+      # numéro de voie: ex: "132"
+      String :numero, size: 50
+      # nom de la voie : "rue victor hugo"
+      # un lieu-dit est renseigné comme "nom_voie" : "Le Gué de la Terre"
       String :nom_voie, size: 250, null: false
       String :code_postale, size: 50, null: false
       String :pays, size: 250, null: false, default: 'France'
@@ -28,7 +30,6 @@ Sequel.migration do
 
     create_table(:personnes_morales) do
       primary_key :id, type: :Bignum
-      foreign_key :adresse_id, :adresses, index: true, null: false, type: :Bignum
       String :forme, size: 50, null: false
       String :denomination, size: 250, null: false
       String :mandataire_prenom, size: 250, null: false

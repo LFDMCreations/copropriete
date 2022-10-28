@@ -7,6 +7,7 @@ Sequel.migration do
     create_table(:ecritures) do
       # ce sont les écritures qui constituent le grand livre
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       foreign_key :compte_id, :comptes, index: true, null: false, type: :Bignum
       foreign_key :exercice_id, :exercices, index: true, null: false, type: :Bignum
       # il peut y avoir une facture attachée, mais par forcément :

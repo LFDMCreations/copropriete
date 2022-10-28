@@ -8,6 +8,7 @@ Sequel.migration do
       # c'est le budget prévisionnel sur la base duquel les charges sont appelés et
       # les factures payées.
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       Date :debut_budget, null: false, default: Sequel::CURRENT_TIMESTAMP
       Date :fin_fin, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
@@ -18,6 +19,7 @@ Sequel.migration do
       # les factures payées.
       # ici : charges spéciales (cf p. 118 du guide ARC)
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       Date :debut_budget, null: false, default: Sequel::CURRENT_TIMESTAMP
       Date :fin_fin, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
@@ -28,6 +30,7 @@ Sequel.migration do
       # les factures payées.
       # ici : budget pour travaux (cf p. 119 du guide ARC)
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
       Date :debut_budget, null: false, default: Sequel::CURRENT_TIMESTAMP
       Date :fin_fin, null: false, default: Sequel::CURRENT_TIMESTAMP
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
