@@ -9,5 +9,6 @@ class Copropriete < Sequel::Model
   one_to_one :banque
   one_to_many :lots
   many_to_many :prestataires, left_key: :copropriete_id, right_key: :prestataire_id, join_table: :prestataires_coproprietes
+  one_to_many :exercices
 
 end

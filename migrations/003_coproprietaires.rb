@@ -12,7 +12,6 @@ Sequel.migration do
     create_table(:coproprietaires) do
       primary_key :id, type: :Bignum      
       foreign_key :copropriete_id, :coproprietes, index: true, type: :Bignum
-      foreign_key :adresse_id, :adresses, index: true, type: :Bignum
       # le copropriétaire est-il sous tutelle ou curatelle :
       FalseClass :majeur_protege, default: false
       TrueClass :whatsapp, default: true
@@ -27,22 +26,13 @@ Sequel.migration do
       # renseigner le champs commentaires s'il y a une alerte
       FalseClass :alerte, null: false, default: false
       FalseClass :conseil_syndical, null: false, default: false
-      # par exemple : '5e ét droite'
-      String :localisation, size: 50, null: false
       # par exemple : 'est en retard sur ses charges'
-      String :commentaires, text: true
+      String :commentaire, text: true
       DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end
 
     create_join_table(personne_physique_id: :personnes_physiques, coproprietaire_id: :coproprietaires)
     create_join_table(personne_morale_id: :personnes_morales, coproprietaire_id: :coproprietaires)
-
-    run 'ALTER TABLE coproprietaires ADD CONSTRAINT coproprietaires_adresse_check CHECK (
-      CASE WHEN habitant
-        THEN adresse_id IS     NULL
-        ELSE adresse_id IS NOT NULL
-      END
-    )'
 
     ###################~~~~~~~~~~~~ ATTENTION ~~~~~~~~~~~~~~################
     ###### DANS LE CODE, UN CHAMPS VIDE DOIT AVOIR LA VALEUR `NULL` ########

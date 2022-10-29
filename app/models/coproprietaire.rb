@@ -9,6 +9,7 @@ class Coproprietaire < Sequel::Model
   one_to_many :lots
   one_to_one :banque
   one_to_one :adresse
+  one_to_many :compte_individuels
   
 =begin
   copro = Coproprietaire.last

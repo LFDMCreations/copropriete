@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Sequel.migration do
   up do
     db = self
@@ -10,6 +8,10 @@ Sequel.migration do
       foreign_key :copropriete_id, :coproprietes, index: true, type: :Bignum
       foreign_key :coproprietaire_id, :coproprietaires, null: false, index: true, type: :Bignum
       Fixnum :tantiemes, null: false
+      # par exemple : '5e ét droite'
+      String :localisation, size: 50, null: false
+      String :commentaire, text: true
+      DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
     end
   end
 

@@ -16,6 +16,8 @@ end
 
 class Compte < Sequel::Model
   many_to_many :ligne_budgets, right_key: :ligne_budget_id, left_key: :compte_id, join_table: :lignes_budgets_comptes
+  one_to_many :ecritures
+  one_to_many :compte_individuels
 
   # instance methods
   def sous_classe_comptable

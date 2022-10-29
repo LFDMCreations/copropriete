@@ -4,6 +4,10 @@ Sequel.migration do
     # Cette table est utilisé dans `coproprietes` dans  `coproprietaires` et `prestataires`
     create_table(:adresses) do
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, index: true, unique: true, type: :Bignum
+      foreign_key :coproprietaire_id, :coproprietaires, index: true, unique: true, type: :Bignum
+      foreign_key :prestataire_id, :prestataires, index: true, unique: true, type: :Bignum
+
       # numéro de voie: ex: "132" ; peut-être vide (ex pour les lieux dits)
       String :numero, size: 50
       # nom de la voie : "rue victor hugo"
