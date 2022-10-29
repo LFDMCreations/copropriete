@@ -1,13 +1,9 @@
-# frozen_string_literal: true
-
 Sequel.migration do
-  up do
-    db = self
 
+  up do
     create_table(:prestataires) do
       primary_key :id, type: :Bignum
-      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
-      foreign_key :adresse_id, :adresses, index: true, type: :Bignum
+      foreign_key :adresse_id, :adresses, index: true, null: false, type: :Bignum
       foreign_key :personne_morale_id, :personnes_morales, index: true, type: :Bignum
       foreign_key :personne_physique_id, :personnes_physiques, index: true, type: :Bignum
       # exemple : "plombier" ou "serrurier"
@@ -24,6 +20,6 @@ Sequel.migration do
   end
 
   down do
-    drop_table(:prestas)
+    drop_table(:prestataires)
   end
 end

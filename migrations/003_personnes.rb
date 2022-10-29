@@ -1,21 +1,6 @@
-# frozen_string_literal: true
-
 Sequel.migration do
   up do
     db = self
-
-    # Cette table est utilisé dans `coproprietes` et dans  `coproprietaires`
-    create_table(:adresses) do
-      primary_key :id, type: :Bignum
-      # numéro de voie: ex: "132"
-      String :numero, size: 50
-      # nom de la voie : "rue victor hugo"
-      # un lieu-dit est renseigné comme "nom_voie" : "Le Gué de la Terre"
-      String :nom_voie, size: 250, null: false
-      String :code_postale, size: 50, null: false
-      String :pays, size: 250, null: false, default: 'France'
-      DateTime :created_at, null: false, default: Sequel::CURRENT_TIMESTAMP
-    end
 
     create_table(:personnes_physiques) do
       primary_key :id, type: :Bignum
@@ -42,6 +27,6 @@ Sequel.migration do
   end
 
   down do
-    drop_table(:adresses, :personnes_physiques, :personnes_morales)
+    drop_table(:personnes_physiques, :personnes_morales)
   end
 end

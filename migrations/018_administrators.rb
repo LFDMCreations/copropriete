@@ -1,9 +1,5 @@
-# frozen_string_literal: true
-
 Sequel.migration do
   up do
-    db = self
-
     # add citext extension to postgres :
     # https://www.postgresql.org/docs/current/citext.html
     # http://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html
@@ -11,6 +7,7 @@ Sequel.migration do
 
     create_table(:administrators) do
       primary_key :id, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, index: true, type: :Bignum
       String :name, size: 250, null: false
       String :first_name, size: 250, null: false
       FalseClass :superuser, null: false, default: false

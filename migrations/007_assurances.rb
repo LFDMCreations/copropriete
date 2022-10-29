@@ -4,7 +4,7 @@ Sequel.migration do
   up do
     create_table(:courtier_assurances) do
       primary_key :id, type: :Bignum
-      foreign_key :copropriete_id, :coproprietes, null: false, index: true, type: :Bignum
+      foreign_key :copropriete_id, :coproprietes, index: true, type: :Bignum
       # le nom du courtier, ex: "nexity assurance"
       String :etablissement, size: 250, null: false
       String :numero_dossier, size: 250, null: false

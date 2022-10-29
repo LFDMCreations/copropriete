@@ -1,4 +1,6 @@
-# frozen_string_literal: true
+# foreign keys are not required as afiliation between these tables is based 
+# on the column "number", not on the id of one table being a foreign key in 
+# another table
 
 Sequel.migration do
   up do
@@ -15,14 +17,14 @@ Sequel.migration do
 
     create_table(:sous_classes_comptables) do
       primary_key :id, type: :Bignum
-      foreign_key :classe_comptable_id, :classes_comptables, index: true, null: false, type: :Bignum
+#      foreign_key :classe_comptable_id, :classes_comptables, index: true, null: false, type: :Bignum
       String :intitule, size: 250, null: false
       String :numero, null: false
     end
 
     create_table(:comptes) do
       primary_key :id, type: :Bignum
-      foreign_key :sous_classe_comptable_id, :sous_classes_comptables, index: true, null: false, type: :Bignum
+#      foreign_key :sous_classe_comptable_id, :sous_classes_comptables, index: true, null: false, type: :Bignum
       String :intitule, size: 250, null: false
       String :numero, null: false
     end
