@@ -1,12 +1,20 @@
 # Installation
 
+## get the sources
+
 ```
 npx degit LFDMCreations/copropriete copropriete
 cd copropriete
 bundle install
 ```
 
-## add citext extension to postgres : 
+## prepare the database
+
+Then, in postgresql, create a database (for example : copropriete_development) and a user with the same name. 
+
+Change database ownership to that user.
+
+### add citext extension to postgres : 
 https://www.postgresql.org/docs/current/citext.html
 
 http://rodauth.jeremyevans.net/rdoc/files/README_rdoc.html
@@ -18,20 +26,26 @@ Run migrations using `sequel -m` :
 
 `sequel -m migrations postgres://copropriete_development@localhost/copropriete_development`
 
+_or whatever your database name and postgresql user is_
+
 see : https://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html
 
-## installation
-Run `racksh` from the directory root. 
+## migrate the plan comptable into the database
 
-then `exit` and comment line 16 of `app.rb`
+1. uncomment line 16 of `app.rb`
 
-re-run `racksh`
+2. Run `racksh` or `rackup` from the directory root. 
 
-## contenu
+3. then `exit` and comment line 16 of `app.rb`
+
+4. re-run `racksh` and build the app.
+
+# contenu
 
 La migration comporte l'ensemble du plan comptable des copropriétés. 
 
 La migration est également à jour avec les obligations règlementaires des syndics 
 
-## Sinatra and Sequel
+# Sinatra and Sequel
 This application is built with the Sinatra framework and Sequel
+Build your own url endpoints and use this as an API with a frontend framework or add views to the Sinatra app.
