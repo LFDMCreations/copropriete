@@ -38,7 +38,7 @@ see : https://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html
 
 3. then `exit` (if racksh) of `ctrl + C` (if rackup) and comment line 16 of `app.rb`
 
-4. re-run `racksh` or `rackup` and build the app.
+4. re-run `racksh` or `rackup` and start building your app.
 
 # contenu
 
