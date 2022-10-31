@@ -36,9 +36,9 @@ see : https://sequel.jeremyevans.net/rdoc/files/doc/migration_rdoc.html
 
 2. Run `racksh` or `rackup` from the directory root. 
 
-3. then `exit` and comment line 16 of `app.rb`
+3. then `exit` (if racksh) of `ctrl + C` (if rackup) and comment line 16 of `app.rb`
 
-4. re-run `racksh` and build the app.
+4. re-run `racksh` or `rackup` and build the app.
 
 # contenu
 
@@ -47,5 +47,5 @@ La migration comporte l'ensemble du plan comptable des copropriétés.
 La migration est également à jour avec les obligations règlementaires des syndics 
 
 # Sinatra and Sequel
-This application is built with the Sinatra framework and Sequel
+This application is built with the Sinatra framework and Sequel.
 Build your own url endpoints and use this as an API with a frontend framework or add views to the Sinatra app.
